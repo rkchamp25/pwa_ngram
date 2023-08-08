@@ -22,3 +22,4 @@ def get_ngrams(request):
     except Exception as e:
         print('Error:', e)
         return Response({'error': 'An error occurred'}, status=500)
+

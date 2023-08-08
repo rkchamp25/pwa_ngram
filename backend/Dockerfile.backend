@@ -1,0 +1,17 @@
+# Use an official Node.js runtime as the base image
+FROM node:16.19.1
+
+# Copy package.json and package-lock.json to the container
+COPY package*.json .
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application files to the container
+COPY . .
+
+# Expose a port (if your backend listens on a specific port)
+EXPOSE 5000
+
+# Command to run your backend application
+CMD ["npm", "start"]

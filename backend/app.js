@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); // Add this line
 const axios = require('axios'); // Add this line for making HTTP requests
+const config = require('./config'); // Import the shared config file
 
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Add this line
 
-mongoose.connect('mongodb://localhost/ngramdb', {
+mongoose.connect(config.mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -81,10 +82,9 @@ app.get('/api/get-ngrams', async (req, res) => {
       }
   
       // Call the Django API with the recent texts
-        const response = await axios.post('http://localhost:8000/api/ngrams/', {
+        const response = await axios.post(config.djangoUrl+'/api/ngrams/', {
             texts: [recentTexts[1].text, recentTexts[0].text],
       });
-  
         res.json({ success: true, ngrams: response.data });
     } catch (error) {
         console.error('Error:', error);

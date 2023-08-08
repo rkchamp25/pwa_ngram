@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mongodb:
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile.mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - NODE_ENV=docker
+  django:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.django
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=docker
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+      - django
+    environment:
+      - NODE_ENV=docker
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=docker
