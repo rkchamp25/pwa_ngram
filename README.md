@@ -46,7 +46,7 @@ Run the following from project root
 go to http://localhost:3000
 
 
-### Checklist  
+## Checklist  
 - [x] 1. Create a backend using ExpressJS.  
 - [x] 2. Create a PWA using React that that accepts text input and sends it to the backend. Bonus : UI changes on interaction  
 - [x] 3. The backend should have the following 3 functionalities -  
