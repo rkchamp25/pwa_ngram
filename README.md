@@ -1,7 +1,7 @@
 # Progressive Web App to Display NGRAMS
 
 Backend - ExpressJS    
-Frontent - React  
+Frontend - React  
 Server - Django  
 Database - MongoDB  
 
@@ -35,7 +35,7 @@ start backend
 start frontend  
 `cd frontend` and `npm start`  
 
-go to [http://localhost:3000]
+go to http://localhost:3000
 
 
 ## DOCKER  
@@ -43,4 +43,4 @@ go to [http://localhost:3000]
 Run the following from project root  
 `docker compose up`  
 
-go to [http://localhost:3000]
+go to http://localhost:3000

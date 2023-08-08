@@ -39,22 +39,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/api/test-connection', async (req, res) => {
-    try {
-      // Log the connection
-      console.log('Connection made from frontend');
-  
-      // Insert the connection log into the Mongoose Model
-      await Connection.create({ timestamp: new Date() });
-  
-      // Respond with success message
-      res.status(200).send('Connection successful');
-    } catch (error) {
-      console.error('Error while handling connection:', error);
-      res.status(500).send('Internal Server Error');
-    }
-});
-
   
 app.post('/api/submit-text', async (req, res) => {
     const { text } = req.body;
